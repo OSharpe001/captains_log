@@ -82,3 +82,12 @@ app.get("/logs/:id", async (req, res) => {
         log: thisLog
     });
 });
+
+// EDIT ROUTE
+// UPDATE ROUTE
+
+// DELETE ROUTE
+app.delete("/logs/:id", async (req, res) => {
+    await CaptainsLog.findByIdAndRemove(req.params.id);
+    res.redirect("/logs");
+});

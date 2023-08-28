@@ -44,6 +44,9 @@ module.exports = function Index({ logs }) {
                 {logs.map((log, index) => (
                     <li key={index} style={listItemStyle}>
                         <a href={`/logs/${log.id}`} style={nameStyle}><h2>{log.title}</h2></a>
+                        <form  method ="POST" action={`/logs/${log.id}?_method=DELETE`}>
+                            <input type="submit" value="DELETE" />
+                        </form>
                     </li>
                 ))}
             </ul>
