@@ -68,12 +68,17 @@ app.get("/logs/new", (req, res) => {
     res.render("New");
 });
 
-// CREATE METHOD FOR LOGS
+// CREATE ROUTING FOR NEW LOGS
 app.post("/logs", async (req,res) => {
-    // req.body.title = req.body.title.toLowerCase();
-    // req.body.entry = req.body.entry.toLowerCase();
     req.body.shipIsBroken === "on" ? req.body.shipIsBroken = true : req.body.shipIsBroken = false;
-    // res.send(req.body);
     await CaptainsLog.create(req.body);
     res.redirect("/logs/Show");
+});
+
+// SHOW ROUTE
+app.get("/logs/:id", async (req, res) => {
+    const thisLog = await CaptainsLog.findById(req.params.id);
+    res.render("Show", {
+        log: thisLog
+    });
 });
