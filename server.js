@@ -19,7 +19,7 @@ mongoose.connect(process.env.MONGO_URI, {
 // DATABASE MESSENGER
 const db = mongoose.connection;
 // MAKE SURE DATABVASE IS CONNECTED
-db.once("open", () => console.log("Captain,... we've concatenated with our database!"));
+db.once("open", () => console.log("Captain,... we've concatenated our database!"));
 // ERROR EVENT MESSENGER
 db.on("error", error => console.log(`Captain! Our database can't take too much more of this ${error.messsage}!`));
 // CLOSE EVENT MESSENGER
@@ -84,7 +84,19 @@ app.get("/logs/:id", async (req, res) => {
 });
 
 // EDIT ROUTE
+app.get("/logs/:id/edit", async (req, res) => {
+    const editedLog = await CaptainsLog.findById(req.params.id);
+    res.render("Edit", {
+        log: editedLog
+    });
+});
+
 // UPDATE ROUTE
+app.put("/logs/:id", async (req, res) => {
+    req.body.shipIsBroken === "on" ? req.body.shipIsBroken = true : req.body.shipIsBroken = false;
+    await CaptainsLog.findByIdAndUpdate(req.params.id, req.body);
+    res.redirect(`/logs/${req.params.id}`);
+});
 
 // DELETE ROUTE
 app.delete("/logs/:id", async (req, res) => {

@@ -47,6 +47,7 @@ module.exports = function Index({ logs }) {
                         <form  method ="POST" action={`/logs/${log.id}?_method=DELETE`}>
                             <input type="submit" value="DELETE" />
                         </form>
+                        <a href={`/logs/${log.id}/edit`}>Edit This Log</a>
                     </li>
                 ))}
             </ul>
