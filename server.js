@@ -5,7 +5,7 @@ const express = require("express");
 
 // GRABBING BODY-PARSER MIDDLEWARE
 const bodyParser = require("body-parser");
-// const CaptainsLog = require(".models/captainsLog.js");
+const CaptainsLog = require("./models/logs.js");
 
 const app = express();
 const Port = 5008;
@@ -55,8 +55,8 @@ app.get("/", (req, res) => {
     res.render("Home", {});
 });
 
-// LOG-LIST ROUTE
-// ............
+// LOG-LIST ROUTE (TRUE INDEX)
+
 
 // NEW ROUTE
 app.get("/logs/new", (req, res) => {
@@ -69,7 +69,7 @@ app.post("/logs", async (req,res) => {
     // req.body.entry = req.body.entry.toLowerCase();
     req.body.shipIsBroken === "on" ? req.body.shipIsBroken = true : req.body.shipIsBroken = false;
     
-    res.send(req.body);
-    // await CaptainsLog.create(req.body);
-    // res.redirect("/logs");
+    // res.send(req.body);
+    await CaptainsLog.create(req.body);
+    res.redirect("/logs/Show");
 });
