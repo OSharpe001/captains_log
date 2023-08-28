@@ -2,6 +2,9 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const express = require("express");
+
+// GRABBING BODY-PARSER MIDDLEWARE
+const bodyParser = require("body-parser");
 // const CaptainsLog = require(".models/captainsLog.js");
 
 const app = express();
@@ -34,6 +37,8 @@ app.use((req, res, next) => {
 });
 // POST-REQUEST-BODY MAINTENANCE
 app.use(express.urlencoded({extended: false}));
+// BODY-PARSER
+app.use(bodyParser.json());
 // ENSURE USABILITY OF HTTP VERBS (LIKE "PUT" AND "DELETE")
 app.use(methodOverride("_method"));
 
@@ -42,6 +47,7 @@ app.listen(Port, (req, res) => {
     console.log(`Our ship docks and deports from Port ${Port}.`)
 });
 
+
 // ROUTES--
 
 // HOME PAGE
@@ -49,7 +55,21 @@ app.get("/", (req, res) => {
     res.render("Home", {});
 });
 
+// LOG-LIST ROUTE
+// ............
+
 // NEW ROUTE
 app.get("/logs/new", (req, res) => {
     res.render("New");
-})
+});
+
+// CREATE METHOD FOR LOGS
+app.post("/logs", async (req,res) => {
+    // req.body.title = req.body.title.toLowerCase();
+    // req.body.entry = req.body.entry.toLowerCase();
+    req.body.shipIsBroken === "on" ? req.body.shipIsBroken = true : req.body.shipIsBroken = false;
+    
+    res.send(req.body);
+    // await CaptainsLog.create(req.body);
+    // res.redirect("/logs");
+});
