@@ -10,7 +10,6 @@ module.exports = function Show({ log }) {
         color: '#dddddd',
         backgroundColor: '#888888',
         textAlign: "center",
-        // textDecoration: "underline",
         minHeight: "98vh",
     };
 

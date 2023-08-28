@@ -29,6 +29,13 @@ module.exports = function New() {
         textAlign: "center",
     };
 
+    const textAreaStyle = {
+        width: "32ch",
+        height: "10ch",
+        fontSize: "12pt",
+        textAlign: "left",
+    };
+
     const checkBoxStyle = {
         display: "block",
         margin: "auto",
@@ -53,11 +60,11 @@ module.exports = function New() {
   return (
     <Default  bodyStyle={pageStyle} headerStyle={h1Style} title={"New Captain's Log"}>
         <form action="/logs" method="POST">
-        <label style={labelStyle} htmlFor="title">Title: </label>
+            <label style={labelStyle} htmlFor="title">Title: </label>
             <input style={inputStyle} name="title" type="text" placeholder="Log Title"/>
 
             <label style={labelStyle} htmlFor="entry">Entry: </label>
-            <input style={inputStyle} name="entry" type="textarea" placeholder="Place your entry, here."/>
+            <input style={textAreaStyle} name="entry" type="textarea" placeholder="Place your entry, here."/>
 
             <label style={labelStyle} htmlFor="shipIsBroken">Is The Ship Damaged? </label>
             <input style={checkBoxStyle} name="shipIsBroken" type="checkbox" />
