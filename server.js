@@ -56,7 +56,12 @@ app.get("/", (req, res) => {
 });
 
 // LOG-LIST ROUTE (TRUE INDEX)
-
+app.get("/logs", async (req, res) => {
+    const logsList = await CaptainsLog.find({})
+    res.render("Index", {
+        logs: logsList
+    });
+});
 
 // NEW ROUTE
 app.get("/logs/new", (req, res) => {
@@ -68,7 +73,6 @@ app.post("/logs", async (req,res) => {
     // req.body.title = req.body.title.toLowerCase();
     // req.body.entry = req.body.entry.toLowerCase();
     req.body.shipIsBroken === "on" ? req.body.shipIsBroken = true : req.body.shipIsBroken = false;
-    
     // res.send(req.body);
     await CaptainsLog.create(req.body);
     res.redirect("/logs/Show");
