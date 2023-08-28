@@ -30,12 +30,6 @@ module.exports = function New() {
     };
 
     const checkBoxStyle = {
-        // width: "100%",
-        // backgroundColor: "red",
-        // fontSize: "12pt",
-        // textAlign: "center",
-        // justifySelf: "center",
-        // alignSelf: "center",
         display: "block",
         margin: "auto",
     };
@@ -69,7 +63,7 @@ module.exports = function New() {
             <input style={checkBoxStyle} name="shipIsBroken" type="checkbox" />
 
             <input style={submitButtonStyle} type="submit" value="Create Your Log"/>
-            
+
             <button style={buttonStyle}><a style={linkStyle} href="/logs">Cancel</a></button>
         </form>
     </Default>
