@@ -103,3 +103,12 @@ app.delete("/logs/:id", async (req, res) => {
     await CaptainsLog.findByIdAndRemove(req.params.id);
     res.redirect("/logs");
 });
+
+// const homePageRoute = require("homePageRoute");
+// const logListRoute = require("logListRoute");
+// const newEntryRoute = require("newEntryRoute");
+// const createNewEntryRoute = require("createNewEntryRoute");
+// const showRoute = require("showRoute");
+// const editRoute = require("editRoute");
+// const updateRoute = require("updateRoute");
+// const deleteRoute = require("deleteRoute");
