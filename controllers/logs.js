@@ -1,6 +1,7 @@
+// IMPORTS OF ROUTES FROM THIS FILE CURRENTLY NOT WORKING
+
 
 // ROUTES--
-
 // HOME PAGE
 const homePageRoute = app.get("/", (req, res) => {
     res.render("Home", {});
